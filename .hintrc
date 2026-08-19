@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "development"
+  ],
+  "hints": {
+    "compat-api/css": [
+      "default",
+      {
+        "ignore": [
+          "backdrop-filter",
+          "border-bottom: var(--component-border-width) solid color-mix(in oklab, var(--color-wood) 24%, transparent)"
+        ]
+      }
+    ]
+  }
+}

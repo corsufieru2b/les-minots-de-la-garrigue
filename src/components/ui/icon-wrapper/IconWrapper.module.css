@@ -1,0 +1,47 @@
+.root {
+  align-items: center;
+  border: var(--component-border-width) solid transparent;
+  border-radius: var(--radius-full);
+  color: var(--color-text-primary);
+  display: inline-flex;
+  justify-content: center;
+  transition: background-color var(--duration-fast) var(--easing-standard),
+    border-color var(--duration-fast) var(--easing-standard),
+    color var(--duration-fast) var(--easing-standard);
+}
+
+.sm {
+  height: calc(var(--component-icon-size-sm) + var(--space-md));
+  width: calc(var(--component-icon-size-sm) + var(--space-md));
+}
+
+.md {
+  height: calc(var(--component-icon-size-md) + var(--space-md));
+  width: calc(var(--component-icon-size-md) + var(--space-md));
+}
+
+.lg {
+  height: calc(var(--component-icon-size-lg) + var(--space-md));
+  width: calc(var(--component-icon-size-lg) + var(--space-md));
+}
+
+.xl {
+  height: calc(var(--component-icon-size-xl) + var(--space-md));
+  width: calc(var(--component-icon-size-xl) + var(--space-md));
+}
+
+.filled {
+  background: var(--color-surface-alt);
+}
+
+.outline {
+  border-color: var(--color-border);
+}
+
+.ghost {
+  background: transparent;
+}
+
+.active {
+  color: var(--color-mediterranean-blue);
+}

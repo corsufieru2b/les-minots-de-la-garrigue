@@ -1,0 +1,20 @@
+.grid {
+  --grid-gap: var(--space-xl);
+  --grid-min-width: 16rem;
+
+  display: grid;
+  gap: var(--grid-gap);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--grid-min-width)), 1fr));
+}
+
+.cols2 {
+  --grid-min-width: 20rem;
+}
+
+.cols3 {
+  --grid-min-width: 16rem;
+}
+
+.cols4 {
+  --grid-min-width: 14rem;
+}

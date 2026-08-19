@@ -1,0 +1,50 @@
+.base {
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--easing-standard),
+    transform var(--duration-normal) var(--easing-standard);
+}
+
+.show {
+  opacity: 1;
+  transform: none;
+}
+
+.fade {
+  transform: none;
+}
+
+.slide {
+  transform: translateY(var(--space-md));
+}
+
+.reveal {
+  transform: translateY(var(--space-sm));
+}
+
+.scale {
+  transform: scale(0.98);
+}
+
+.delayNone {
+  transition-delay: 0ms;
+}
+
+.delayFast {
+  transition-delay: var(--duration-fast);
+}
+
+.delayNormal {
+  transition-delay: var(--duration-normal);
+}
+
+.delaySlow {
+  transition-delay: var(--duration-slow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .base {
+    opacity: 1;
+    transform: none;
+    transition-duration: var(--duration-reduce);
+  }
+}

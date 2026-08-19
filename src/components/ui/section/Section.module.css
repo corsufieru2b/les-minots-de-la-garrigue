@@ -1,0 +1,68 @@
+.section {
+  padding-block: var(--space-4xl);
+}
+
+.background {
+  background: var(--color-background);
+}
+
+.surface {
+  background: var(--color-surface);
+}
+
+.surfaceAlt {
+  background: var(--color-surface-alt);
+}
+
+.transparent {
+  background: transparent;
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+.sm {
+  padding-block: var(--space-2xl);
+}
+
+.md {
+  padding-block: var(--space-3xl);
+}
+
+.lg {
+  padding-block: var(--space-4xl);
+}
+
+.xl {
+  padding-block: calc(var(--space-4xl) + var(--space-xl));
+}
+
+/* Mobile: keep the top offset that clears the fixed header, trim the rest. */
+@media (max-width: 47.99rem) {
+  .section,
+  .lg,
+  .xl {
+    padding-bottom: var(--space-3xl);
+  }
+
+  .md {
+    padding-bottom: var(--space-2xl);
+  }
+
+  .sm {
+    padding-bottom: var(--space-xl);
+  }
+
+  .section:not(:first-of-type) {
+    padding-top: var(--space-3xl);
+  }
+}

@@ -1,0 +1,33 @@
+.container {
+  margin-inline: auto;
+  padding-inline: var(--space-lg);
+  width: 100%;
+}
+
+.centered {
+  text-align: center;
+}
+
+.xs {
+  max-width: var(--container-sm);
+}
+
+.sm {
+  max-width: var(--container-md);
+}
+
+.md {
+  max-width: var(--container-lg);
+}
+
+.lg {
+  max-width: var(--container-xl);
+}
+
+.xl {
+  max-width: var(--container-2xl);
+}
+
+.twoXl {
+  max-width: var(--container-max);
+}

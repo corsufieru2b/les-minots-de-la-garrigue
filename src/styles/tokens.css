@@ -1,0 +1,155 @@
+:root {
+  /* Brand palette */
+  --color-mediterranean-blue: #245b8e;
+  --color-olive: #6b7a3a;
+  --color-terracotta: #b86a45;
+  --color-sun-yellow: #e8b437;
+  --color-wood: #8a6445;
+  --color-sand: #f5f1e8;
+  --color-white: #ffffff;
+  --color-text: #4b4b4b;
+
+  /* Semantic colors */
+  --color-background: var(--color-sand);
+  --color-surface: var(--color-white);
+  --color-surface-alt: color-mix(in oklab, var(--color-sand) 84%, var(--color-white));
+  --color-text-primary: var(--color-text);
+  --color-text-secondary: color-mix(in oklab, var(--color-text) 84%, var(--color-white));
+  --color-border: color-mix(in oklab, var(--color-wood) 32%, var(--color-white));
+  --color-success: color-mix(in oklab, var(--color-olive) 86%, black);
+  --color-warning: color-mix(in oklab, var(--color-sun-yellow) 76%, var(--color-wood));
+  --color-error: color-mix(in oklab, var(--color-terracotta) 82%, black);
+  --color-info: var(--color-mediterranean-blue);
+
+  /* Typography */
+  --font-family-primary: var(--font-sans), "Manrope", "Avenir Next", "Segoe UI", sans-serif;
+  --font-family-secondary: var(--font-serif), "Cormorant Garamond", "Times New Roman", serif;
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.2;
+  --line-height-snug: 1.35;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.7;
+
+  --letter-spacing-tight: -0.01em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.02em;
+
+  --type-display: var(--font-size-4xl);
+  --type-h1: var(--font-size-3xl);
+  --type-h2: var(--font-size-2xl);
+  --type-h3: var(--font-size-xl);
+  --type-h4: var(--font-size-lg);
+  --type-body-large: var(--font-size-lg);
+  --type-body: var(--font-size-md);
+  --type-small: var(--font-size-sm);
+  --type-caption: var(--font-size-xs);
+
+  /* Spacing scale */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 0.75rem;
+  --space-lg: 1rem;
+  --space-xl: 1.5rem;
+  --space-2xl: 2rem;
+  --space-3xl: 3rem;
+  --space-4xl: 4rem;
+  --space-5xl: 5rem;
+
+  /* Radius scale */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* Shadow scale */
+  --shadow-sm: 0 6px 16px rgb(75 75 75 / 0.06);
+  --shadow-md: 0 10px 24px rgb(75 75 75 / 0.08);
+  --shadow-lg: 0 18px 40px rgb(75 75 75 / 0.1);
+
+  /* Motion */
+  --duration-fast: 250ms;
+  --duration-normal: 320ms;
+  --duration-slow: 400ms;
+  --duration-reduce: 1ms;
+
+  --easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --easing-emphasized: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --easing-decelerate: cubic-bezier(0, 0, 0.2, 1);
+
+  /* Breakpoints (mobile-first) */
+  --breakpoint-sm: 40rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 80rem;
+  --breakpoint-2xl: 96rem;
+
+  /* Z-index hierarchy */
+  --z-index-base: 0;
+  --z-index-content: 10;
+  --z-index-overlay: 20;
+  --z-index-dropdown: 30;
+  --z-index-sticky: 40;
+  --z-index-fixed: 50;
+  --z-index-modal: 60;
+  --z-index-popover: 70;
+  --z-index-toast: 80;
+  --z-index-tooltip: 90;
+
+  /* Container widths */
+  --container-sm: 40rem;
+  --container-md: 48rem;
+  --container-lg: 64rem;
+  --container-xl: 80rem;
+  --container-2xl: 90rem;
+  --container-max: var(--container-2xl);
+
+  /* Foundation aliases used globally */
+  --content-max-width: var(--container-max);
+  --section-spacing: var(--space-4xl);
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+  --focus-ring-color: var(--color-mediterranean-blue);
+
+  --state-disabled-opacity: 0.45;
+  --state-hover-opacity: 0.96;
+  --state-active-opacity: 0.9;
+
+  --component-border-width: 1px;
+  --component-divider-width: 1px;
+  --component-icon-size-sm: 1rem;
+  --component-icon-size-md: 1.25rem;
+  --component-icon-size-lg: 1.5rem;
+  --component-icon-size-xl: 2rem;
+  --component-card-radius: var(--radius-2xl);
+  --component-card-padding: var(--space-2xl);
+  --component-button-radius: var(--radius-full);
+}
+
+html {
+  color-scheme: light;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: var(--duration-reduce) !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: var(--duration-reduce) !important;
+  }
+}

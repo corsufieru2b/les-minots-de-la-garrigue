@@ -1,0 +1,97 @@
+.spinner {
+  animation: spin var(--duration-slow) linear infinite;
+  border: var(--component-border-width) solid var(--color-border);
+  border-radius: var(--radius-full);
+  border-right-color: var(--color-mediterranean-blue);
+  display: inline-flex;
+  height: var(--component-icon-size-lg);
+  width: var(--component-icon-size-lg);
+}
+
+.skeleton {
+  animation: pulse var(--duration-slow) var(--easing-standard) infinite alternate;
+  background: var(--color-surface-alt);
+  border-radius: var(--radius-md);
+  min-height: var(--space-3xl);
+  width: 100%;
+}
+
+.dots {
+  align-items: center;
+  display: inline-flex;
+  gap: var(--space-xs);
+}
+
+.dots span {
+  animation: bounce var(--duration-slow) var(--easing-decelerate) infinite;
+  background: var(--color-mediterranean-blue);
+  border-radius: var(--radius-full);
+  display: block;
+  height: var(--space-sm);
+  width: var(--space-sm);
+}
+
+.dots span:nth-child(2) {
+  animation-delay: 90ms;
+}
+
+.dots span:nth-child(3) {
+  animation-delay: 180ms;
+}
+
+.progressTrack {
+  background: var(--color-surface-alt);
+  border-radius: var(--radius-full);
+  height: var(--space-sm);
+  overflow: hidden;
+  width: 100%;
+}
+
+.progressBar {
+  background: var(--color-mediterranean-blue);
+  border-radius: inherit;
+  height: 100%;
+  transition: width var(--duration-normal) var(--easing-standard);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  from {
+    opacity: 0.5;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(calc(var(--space-xs) * -1));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner,
+  .skeleton,
+  .dots span,
+  .progressBar {
+    animation: none;
+    transition-duration: var(--duration-reduce);
+  }
+}

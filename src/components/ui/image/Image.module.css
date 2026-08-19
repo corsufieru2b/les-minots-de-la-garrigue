@@ -1,0 +1,28 @@
+.wrapper {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.responsive {
+  border-radius: var(--component-card-radius);
+}
+
+.rounded {
+  border-radius: var(--component-card-radius);
+}
+
+.card {
+  border-radius: var(--component-card-radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.hero {
+  border-radius: var(--component-card-radius);
+}
+
+.image {
+  height: auto;
+  object-fit: cover;
+  width: 100%;
+}

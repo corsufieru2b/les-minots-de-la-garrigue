@@ -1,0 +1,74 @@
+.card {
+  background: var(--color-surface);
+  border: var(--component-border-width) solid var(--color-border);
+  border-radius: var(--component-card-radius);
+  color: var(--color-text-primary);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  height: 100%;
+  justify-content: flex-start;
+  padding: var(--component-card-padding);
+  transition: transform var(--duration-normal) var(--easing-standard),
+    box-shadow var(--duration-normal) var(--easing-standard);
+}
+
+.classic {
+  box-shadow: var(--shadow-sm);
+}
+
+.image {
+  overflow: hidden;
+  padding: 0;
+}
+
+.interactive {
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: transform var(--duration-normal) var(--easing-standard),
+    box-shadow var(--duration-normal) var(--easing-standard);
+}
+
+.interactive:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(calc(var(--space-xs) * -1));
+}
+
+.interactive:focus-within {
+  outline: var(--focus-ring-width) solid var(--color-mediterranean-blue);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.simple {
+  border-color: transparent;
+  box-shadow: none;
+  padding: 0;
+}
+
+.premium {
+  background: var(--color-background);
+  box-shadow: var(--shadow-lg);
+}
+
+.section {
+  background: var(--color-surface-alt);
+  padding: calc(var(--component-card-padding) + var(--space-xs));
+}
+
+.shadow {
+  box-shadow: var(--shadow-md);
+}
+
+.flat {
+  box-shadow: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .interactive {
+    transition-duration: var(--duration-reduce);
+  }
+
+  .interactive:hover {
+    transform: none;
+  }
+}
