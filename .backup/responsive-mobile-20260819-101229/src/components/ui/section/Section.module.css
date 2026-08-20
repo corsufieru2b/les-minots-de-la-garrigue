@@ -1,0 +1,47 @@
+.section {
+  padding-block: var(--space-4xl);
+}
+
+.background {
+  background: var(--color-background);
+}
+
+.surface {
+  background: var(--color-surface);
+}
+
+.surfaceAlt {
+  background: var(--color-surface-alt);
+}
+
+.transparent {
+  background: transparent;
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+.sm {
+  padding-block: var(--space-2xl);
+}
+
+.md {
+  padding-block: var(--space-3xl);
+}
+
+.lg {
+  padding-block: var(--space-4xl);
+}
+
+.xl {
+  padding-block: calc(var(--space-4xl) + var(--space-xl));
+}
