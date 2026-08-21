@@ -188,6 +188,14 @@
   color: var(--color-mediterranean-blue);
 }
 
+/* Internal pages (non-Hero): terracotta fill keeps the toggle visible on light backgrounds. */
+.navbar:not(.navbarHome) .mobileToggle {
+  background: var(--color-terracotta);
+  border-color: color-mix(in oklab, var(--color-terracotta) 60%, var(--color-wood));
+  box-shadow: var(--shadow-sm);
+  color: var(--color-white);
+}
+
 .mobilePanel {
   max-height: 0;
   opacity: 0;
