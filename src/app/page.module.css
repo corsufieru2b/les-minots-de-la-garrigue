@@ -632,15 +632,44 @@
   align-items: start;
 }
 
-.mapPlaceholder {
-  min-height: 22rem;
+.contactLink {
+  color: inherit;
+  text-decoration-color: color-mix(in oklab, currentcolor 28%, transparent);
 }
 
-.mapInner {
-  align-items: center;
+.contactLink:hover,
+.contactLink:focus-visible {
+  text-decoration-color: currentcolor;
+}
+
+.hoursList {
+  width: 100%;
+}
+
+.hoursRow {
+  width: 100%;
+}
+
+.mapPlaceholder {
+  min-height: 22rem;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+}
+
+.mapFrame {
+  border: 0;
+  display: block;
   height: 100%;
-  justify-content: center;
-  text-align: center;
+  min-height: 22rem;
+  width: 100%;
+}
+
+.mapButtonLink {
+  bottom: var(--space-md);
+  position: absolute;
+  right: var(--space-md);
+  text-decoration: none;
 }
 
 .footer {

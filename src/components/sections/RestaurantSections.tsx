@@ -55,6 +55,25 @@ type PressArticle = {
   articleUrl?: string;
 };
 
+const CONTACT_ADDRESS_LINE_1 = "37 Av. Alphonse Denis";
+const CONTACT_ADDRESS_LINE_2 = "83400 Hyères";
+const CONTACT_PHONE_DISPLAY = "04 23 14 32 61";
+const CONTACT_PHONE_HREF = "tel:+33423143261";
+const CONTACT_EMAIL = "leomar.hyeres@gmail.com";
+const GOOGLE_MAPS_SHARE_URL = "https://maps.app.goo.gl/pH4f7RoDEQJrEuER7?g_st=ic";
+const GOOGLE_MAPS_EMBED_SRC =
+  "https://www.google.com/maps?q=37+Av.+Alphonse+Denis,+83400+Hy%C3%A8res&output=embed";
+
+const restaurantHours = [
+  { day: "Lundi", time: "Fermé" },
+  { day: "Mardi", time: "8h00 – 22h30" },
+  { day: "Mercredi", time: "8h00 – 22h00" },
+  { day: "Jeudi", time: "8h00 – 22h00" },
+  { day: "Vendredi", time: "8h00 – 22h00" },
+  { day: "Samedi", time: "8h00 – 17h00" },
+  { day: "Dimanche", time: "Fermé" },
+] as const;
+
 const pressArticles: PressArticle[] = [
   {
     media: "Guide Michelin",
@@ -460,48 +479,86 @@ export function ContactSection() {
         <VStack spacing="lg">
           <Typography variant="h2">Contact</Typography>
           <Typography variant="body" tone="secondary">
-            Les coordonnees definitives du restaurant sont en cours de confirmation. Cette zone
-            est prete a etre completee avec les informations officielles.
+            Retrouvez toutes nos coordonnees pour nous rendre visite ou nous contacter directement.
           </Typography>
 
           <VStack spacing="md">
-            <HStack spacing="sm">
+            <Flex gap="sm" align="start">
               <IconWrapper variant="filled" size="md">
                 <MapPin size={16} />
               </IconWrapper>
-              <Typography variant="body">Adresse: a completer</Typography>
-            </HStack>
+              <a
+                href={GOOGLE_MAPS_SHARE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.contactLink}
+              >
+                <Typography variant="body" as="span">
+                  {CONTACT_ADDRESS_LINE_1}
+                  <br />
+                  {CONTACT_ADDRESS_LINE_2}
+                </Typography>
+              </a>
+            </Flex>
             <HStack spacing="sm">
               <IconWrapper variant="filled" size="md">
                 <Phone size={16} />
               </IconWrapper>
-              <Typography variant="body">Telephone: a completer</Typography>
+              <a href={CONTACT_PHONE_HREF} className={styles.contactLink}>
+                <Typography variant="body" as="span">
+                  {CONTACT_PHONE_DISPLAY}
+                </Typography>
+              </a>
             </HStack>
             <HStack spacing="sm">
               <IconWrapper variant="filled" size="md">
                 <Mail size={16} />
               </IconWrapper>
-              <Typography variant="body">Email: a completer</Typography>
+              <a href={`mailto:${CONTACT_EMAIL}`} className={styles.contactLink}>
+                <Typography variant="body" as="span">
+                  {CONTACT_EMAIL}
+                </Typography>
+              </a>
             </HStack>
-            <HStack spacing="sm">
+            <Flex gap="sm" align="start">
               <IconWrapper variant="filled" size="md">
                 <Clock3 size={16} />
               </IconWrapper>
-              <Typography variant="body">Horaires: a completer</Typography>
-            </HStack>
+              <VStack spacing="xs" className={styles.hoursList}>
+                {restaurantHours.map((entry) => (
+                  <Flex key={entry.day} justify="between" gap="md" className={styles.hoursRow}>
+                    <Typography variant="body">{entry.day}</Typography>
+                    <Typography variant="body" tone={entry.time === "Fermé" ? "secondary" : "primary"}>
+                      {entry.time}
+                    </Typography>
+                  </Flex>
+                ))}
+              </VStack>
+            </Flex>
           </VStack>
         </VStack>
 
         <Surface variant="outline" className={styles.mapPlaceholder}>
-          <VStack spacing="sm" className={styles.mapInner}>
-            <MapPin size={22} />
-            <Typography variant="h4">Carte Google (placeholder)</Typography>
-            <Typography variant="small" tone="secondary">
-              Integration definitive prevue au prochain lot.
-            </Typography>
-          </VStack>
+          <iframe
+            src={GOOGLE_MAPS_EMBED_SRC}
+            title="Localisation Les Minots de la Garrigue sur Google Maps"
+            className={styles.mapFrame}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+          <a
+            href={GOOGLE_MAPS_SHARE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.mapButtonLink}
+          >
+            <Button variant="secondary" size="sm">
+              Voir sur Google Maps
+            </Button>
+          </a>
         </Surface>
       </Grid>
     </Section>
   );
 }
+
