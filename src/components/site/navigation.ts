@@ -11,5 +11,5 @@ export const siteNavItems: SiteNavItem[] = [
   { label: "Reserver", href: "/reservation" },
   { label: "Avis", href: "/avis" },
   { label: "Contact", href: "/contact" },
-  { label: "Devis", href: "/devis" },
+  { label: "Traiteur", href: "/devis" },
 ];

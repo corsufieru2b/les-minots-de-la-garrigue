@@ -516,15 +516,22 @@
   object-fit: cover;
 }
 
-.dishCard {
+.dishCard,
+.cuisineGalleryCard {
   overflow: hidden;
   padding: var(--space-md);
 }
 
 .dishImage,
-.dishImage :global(img) {
+.dishImage :global(img),
+.cuisineGalleryImage,
+.cuisineGalleryImage :global(img) {
   aspect-ratio: 4 / 3;
   object-fit: cover;
+}
+
+.cuisineGalleryGrid {
+  --grid-min-width: 15rem;
 }
 
 .dishCaptionPlaceholder {

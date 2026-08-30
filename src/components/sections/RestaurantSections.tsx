@@ -37,6 +37,11 @@ const dishes = [
   "/images/plats/plats-03.webp.jpeg",
 ] as const;
 
+export type CuisineImage = {
+  alt: string;
+  src: string;
+};
+
 const galleryImages = [
   "/images/galerie/galerie-01.webp.jpeg",
   "/images/galerie/galerie-02.webp.jpeg",
@@ -142,14 +147,21 @@ export function StorySection() {
             <Badge tone="neutral" variant="soft">
               Notre histoire
             </Badge>
-            <Typography variant="h1">Une maison conviviale, pensee comme un lieu de vie</Typography>
+            <Typography variant="h1">Deux freres, une terre, une table</Typography>
             <Typography variant="bodyLarge" tone="secondary">
-              Les Minots de la Garrigue vous accueillent dans une ambiance mediterraneenne
-              chaleureuse, ou l&apos;on vient prendre le temps de bien manger et de partager.
+              Nous sommes Léo et Martin, deux frères natifs d&apos;Hyères, profondément attachés à
+              notre terre, à la mer et à la nature.
             </Typography>
             <Typography variant="body" tone="secondary">
-              La cuisine est maison, preparee avec des produits frais et de saison, dans un
-              esprit de generosite, de convivialite et de plaisir autour de la table.
+              Petits-fils de maraîcher et fils de pêcheur amateur, nous avons grandi au rythme
+              des grandes tablées sous les oliviers, des légumes du jardin et du poisson rapporté
+              par notre père.
+            </Typography>
+            <Typography variant="body" tone="secondary">
+              Au restaurant Les Minots de la Garrigue, nous souhaitons partager cette histoire et
+              notre passion pour les bons moments autour d&apos;une table. Dans l&apos;assiette comme dans
+              le verre, nous mettons à l&apos;honneur, au fil des saisons, les produits et les
+              savoir-faire qui font la richesse de notre terroir.
             </Typography>
           </VStack>
         </Reveal>
@@ -170,7 +182,7 @@ export function StorySection() {
   );
 }
 
-export function CuisineSection() {
+export function CuisineSection({ cuisineImages = dishes.map((src, index) => ({ alt: `Photo de cuisine ${index + 1}`, src })) }: { cuisineImages?: CuisineImage[] }) {
   return (
     <Section spacing="xl" background="surface">
       <VStack spacing="xl">
@@ -180,26 +192,52 @@ export function CuisineSection() {
           </Badge>
           <Typography variant="h2">Une cuisine maison inspiree de la Mediterranee</Typography>
           <Typography variant="body" tone="secondary">
-            Nos assiettes evoluent selon les produits frais et la saison, avec une approche
-            simple, gourmande et tournee vers le partage.
+            En cuisine, Martin défend une idée simple : partir du produit avant de penser à
+            l&apos;assiette.
+          </Typography>
+          <Typography variant="body" tone="secondary">
+            Nous privilégions les producteurs d&apos;Hyères et des alentours, en travaillant au
+            maximum en circuit court, avec le moins d&apos;intermédiaires possible. Une façon de mieux
+            connaître celles et ceux qui font nos produits, de privilégier une rémunération juste
+            et de créer un véritable lien entre le producteur, la cuisine et ceux qui passent à
+            table.
+          </Typography>
+          <Typography variant="body" tone="secondary">
+            Légumes, poissons, viandes ou produits de saison : nous travaillons avant tout des
+            produits bruts, locaux et choisis au plus près de leur origine, en respectant leur
+            saisonnalité.
+          </Typography>
+          <Typography variant="body" tone="secondary">
+            Pour Martin, un bon produit n&apos;a pas besoin d&apos;être dénaturé. Quand le goût est là,
+            la simplicité reste souvent la meilleure façon de le raconter.
+          </Typography>
+          <Typography variant="body" tone="secondary">
+            Notre carte évolue donc au fil des saisons, environ tous les deux mois, en fonction de
+            ce que la nature et nos producteurs ont à nous offrir. Une carte volontairement courte,
+            pour cuisiner juste, éviter le gaspillage et laisser toute leur place aux produits.
           </Typography>
         </VStack>
 
-        <Grid columns={3} className={styles.dishGrid}>
-          {dishes.map((dishImage, idx) => (
-            <Card key={dishImage} variant="interactive" className={styles.dishCard}>
-              <AppImage
-                src={dishImage}
-                alt={`Photo de cuisine ${idx + 1}`}
-                width={1400}
-                height={1050}
-                variant="card"
-                className={styles.dishImage}
-              />
-              <div className={styles.dishCaptionPlaceholder} aria-hidden="true" />
-            </Card>
-          ))}
-        </Grid>
+        <VStack spacing="lg">
+          <Typography variant="h3">Quelques-unes de nos créations</Typography>
+          {cuisineImages.length > 0 ? (
+            <Grid columns={3} className={styles.cuisineGalleryGrid}>
+              {cuisineImages.map((image, index) => (
+                <Card key={image.src} variant="image" className={styles.cuisineGalleryCard}>
+                  <AppImage
+                    src={image.src}
+                    alt={image.alt}
+                    width={1200}
+                    height={index % 5 === 0 ? 1500 : 1200}
+                    sizes="(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw"
+                    variant="card"
+                    className={styles.cuisineGalleryImage}
+                  />
+                </Card>
+              ))}
+            </Grid>
+          ) : null}
+        </VStack>
       </VStack>
     </Section>
   );
@@ -328,10 +366,16 @@ export function QuoteSection() {
       <Grid columns={2} className={styles.formGrid}>
         <Surface variant="outline" className={styles.formPanel}>
           <VStack spacing="lg">
-            <Typography variant="h3">Demande de devis</Typography>
+            <Badge tone="neutral" variant="soft">
+              Traiteur
+            </Badge>
+            <Typography variant="h3">Les Minots s&apos;invitent chez vous</Typography>
             <Typography variant="small" tone="secondary">
-              Decrivez votre besoin en detail afin que le restaurant puisse vous recontacter
-              avec une proposition adaptee.
+              Mariage, baptême, anniversaire, dîner privé ou chef à domicile : nous imaginons
+              avec vous des prestations sur mesure, au restaurant comme en extérieur.
+            </Typography>
+            <Typography variant="small" tone="secondary">
+              Un événement, une envie, un projet ? Parlons-en.
             </Typography>
             <form className={styles.form} onSubmit={(event) => event.preventDefault()}>
               <label className={styles.fieldLabel} htmlFor="quote-name">
