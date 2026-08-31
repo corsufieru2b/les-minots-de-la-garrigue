@@ -12,8 +12,12 @@ export const metadata: Metadata = buildPageMetadata(
 
 export default function HomePage() {
   return (
-    <SitePageShell>
-      <HeroSection />
-    </SitePageShell>
+    <>
+      {/* Hero background is a CSS background-image (not next/image); preload it since it is the page's LCP element. */}
+      <link rel="preload" as="image" href="/images/hero/Hero-01.webp.jpeg" fetchPriority="high" />
+      <SitePageShell>
+        <HeroSection />
+      </SitePageShell>
+    </>
   );
 }

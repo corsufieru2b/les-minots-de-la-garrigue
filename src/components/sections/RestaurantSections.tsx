@@ -178,6 +178,8 @@ export function StorySection() {
               alt="Terrasse ombragee du restaurant entouree de vegetation"
               width={1600}
               height={1200}
+              sizes="(max-width: 47.99rem) 100vw, 50vw"
+              priority
               variant="rounded"
               className={styles.storyImage}
             />
@@ -273,6 +275,7 @@ export function GallerySection() {
                   alt={`Vue de la galerie ${idx + 1}`}
                   width={1200}
                   height={idx % 3 === 0 ? 1400 : 1000}
+                  sizes="(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 33vw"
                   variant="rounded"
                   className={styles.galleryImage}
                 />
@@ -356,6 +359,7 @@ export function ReservationSection() {
               alt="Table de terrasse prete dans une ambiance conviviale"
               width={1600}
               height={1200}
+              sizes="(max-width: 47.99rem) 100vw, 50vw"
               variant="card"
               className={styles.formAsideImage}
             />
