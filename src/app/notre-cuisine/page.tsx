@@ -8,7 +8,7 @@ import { buildPageMetadata } from "@/lib/page-metadata";
 
 export const metadata: Metadata = buildPageMetadata(
   "Notre cuisine",
-  "Explorez la cuisine mediterraneenne maison des Minots de la Garrigue et ses produits de saison.",
+  "La cuisine de Martin aux Minots de la Garrigue : produits locaux, circuit court avec les producteurs d'Hyères et des alentours, carte de saison.",
   "/notre-cuisine",
 );
 

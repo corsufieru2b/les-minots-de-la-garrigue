@@ -6,7 +6,7 @@ import { buildPageMetadata } from "@/lib/page-metadata";
 
 export const metadata: Metadata = buildPageMetadata(
   "Notre histoire",
-  "Decouvrez l'histoire des Minots de la Garrigue et l'ambiance conviviale du restaurant.",
+  "Découvrez l'histoire de Léo et Martin, deux frères d'Hyères, et la philosophie du restaurant Les Minots de la Garrigue.",
   "/notre-histoire",
 );
 

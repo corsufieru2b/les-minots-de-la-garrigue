@@ -6,7 +6,7 @@ import { buildPageMetadata } from "@/lib/page-metadata";
 
 export const metadata: Metadata = buildPageMetadata(
   "Traiteur",
-  "Decouvrez les prestations traiteur et evenements des Minots de la Garrigue.",
+  "Service traiteur des Minots de la Garrigue à Hyères : mariages, événements privés et prestations sur mesure, au restaurant ou en extérieur.",
   "/devis",
 );
 

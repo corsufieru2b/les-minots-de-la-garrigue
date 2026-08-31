@@ -5,8 +5,8 @@ import { SitePageShell } from "@/components/site";
 import { buildPageMetadata } from "@/lib/page-metadata";
 
 export const metadata: Metadata = buildPageMetadata(
-  "Accueil",
-  "Decouvrez Les Minots de la Garrigue, table mediterraneenne conviviale.",
+  "Restaurant à Hyères",
+  "Les Minots de la Garrigue, restaurant à Hyères : cuisine méditerranéenne conviviale imaginée par Martin à partir de produits locaux et de saison.",
   "/",
 );
 

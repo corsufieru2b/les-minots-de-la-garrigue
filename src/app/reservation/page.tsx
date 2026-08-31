@@ -5,8 +5,8 @@ import { SitePageShell } from "@/components/site";
 import { buildPageMetadata } from "@/lib/page-metadata";
 
 export const metadata: Metadata = buildPageMetadata(
-  "Reservation",
-  "Envoyez votre demande de reservation aux Minots de la Garrigue.",
+  "Réservation",
+  "Réservez votre table au restaurant Les Minots de la Garrigue à Hyères directement en ligne.",
   "/reservation",
 );
 

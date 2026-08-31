@@ -6,7 +6,7 @@ import { buildPageMetadata } from "@/lib/page-metadata";
 
 export const metadata: Metadata = buildPageMetadata(
   "Galerie",
-  "Parcourez la galerie photo du restaurant Les Minots de la Garrigue.",
+  "Découvrez en images l'ambiance et les créations culinaires du restaurant Les Minots de la Garrigue à Hyères.",
   "/galerie",
 );
 

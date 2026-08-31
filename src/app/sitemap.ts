@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next";
 
+import { SITE_URL } from "@/constants/site";
+
 const routes = [
   "/",
   "/notre-histoire",
@@ -15,7 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
   return routes.map((path) => ({
-    url: path,
+    url: `${SITE_URL}${path}`,
     lastModified: now,
   }));
 }

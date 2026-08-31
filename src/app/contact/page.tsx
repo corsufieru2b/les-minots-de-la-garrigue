@@ -6,7 +6,7 @@ import { buildPageMetadata } from "@/lib/page-metadata";
 
 export const metadata: Metadata = buildPageMetadata(
   "Contact",
-  "Retrouvez les informations de contact et les horaires des Minots de la Garrigue.",
+  "Adresse, téléphone, email et horaires du restaurant Les Minots de la Garrigue à Hyères.",
   "/contact",
 );
 

@@ -28,6 +28,7 @@ import {
   Typography,
   VStack,
 } from "@/components/ui";
+import srOnlyStyles from "@/components/ui/utilities/Utilities.module.css";
 import { QuoteRequestForm } from "@/components/forms/QuoteRequestForm";
 
 import styles from "@/app/page.module.css";
@@ -114,6 +115,10 @@ export function HeroSection() {
       <Container size="xl">
         <div className={styles.heroGrid}>
           <Fade className={styles.heroContent}>
+            {/* Visually hidden: keeps the validated image-only Hero design while giving the page a real H1 for SEO. */}
+            <Typography variant="h1" as="h1" className={srOnlyStyles.srOnly}>
+              Les Minots de la Garrigue, restaurant à Hyères
+            </Typography>
             <div className={styles.heroActions}>
               <Button
                 variant="primary"
@@ -191,7 +196,7 @@ export function CuisineSection({ cuisineImages = dishes.map((src, index) => ({ a
           <Badge tone="info" variant="outline">
             Notre cuisine
           </Badge>
-          <Typography variant="h2">Une cuisine maison inspiree de la Mediterranee</Typography>
+          <Typography variant="h2" as="h1">Une cuisine maison inspiree de la Mediterranee</Typography>
           <Typography variant="body" tone="secondary">
             En cuisine, Martin défend une idée simple : partir du produit avant de penser à
             l&apos;assiette.
@@ -220,7 +225,7 @@ export function CuisineSection({ cuisineImages = dishes.map((src, index) => ({ a
         </VStack>
 
         <VStack spacing="lg">
-          <Typography variant="h3">Quelques-unes de nos créations</Typography>
+          <Typography variant="h3" as="h2">Quelques-unes de nos créations</Typography>
           {cuisineImages.length > 0 ? (
             <Grid columns={3} className={styles.cuisineGalleryGrid}>
               {cuisineImages.map((image, index) => (
@@ -252,7 +257,7 @@ export function GallerySection() {
           <Badge tone="neutral" variant="outline">
             Galerie
           </Badge>
-          <Typography variant="h2">L&apos;atmosphere du lieu, capturee dans ses moindres details</Typography>
+          <Typography variant="h2" as="h1">L&apos;atmosphere du lieu, capturee dans ses moindres details</Typography>
           <Typography variant="body" tone="secondary">
             Ces photos presentent l&apos;ambiance du restaurant, la terrasse et quelques creations
             culinaires servies selon la saison.
@@ -286,7 +291,7 @@ export function ReservationSection() {
       <Grid columns={2} className={styles.formGrid}>
         <Surface variant="outline" className={styles.formPanel}>
           <VStack spacing="lg">
-            <Typography variant="h3">Reservation</Typography>
+            <Typography variant="h3" as="h1">Reservation</Typography>
             <Typography variant="small" tone="secondary">
               Votre demande est transmise directement au restaurant. Le site n&apos;affiche pas de
               systeme d&apos;acceptation ou de refus en ligne.
@@ -341,7 +346,7 @@ export function ReservationSection() {
 
         <Surface variant="filled" className={styles.formAside}>
           <VStack spacing="lg">
-            <Typography variant="h3">Un accueil attentif, des options sur mesure</Typography>
+            <Typography variant="h3" as="h2">Un accueil attentif, des options sur mesure</Typography>
             <Typography variant="body" tone="secondary">
               Indiquez vos contraintes alimentaires, le nombre de convives et vos preferences.
               Notre equipe prepare chaque accueil avec soin.
@@ -370,7 +375,7 @@ export function QuoteSection() {
             <Badge tone="neutral" variant="soft">
               Traiteur
             </Badge>
-            <Typography variant="h3">Les Minots s&apos;invitent chez vous</Typography>
+            <Typography variant="h3" as="h1">Les Minots s&apos;invitent chez vous</Typography>
             <Typography variant="small" tone="secondary">
               Mariage, baptême, anniversaire, dîner privé ou chef à domicile : nous imaginons
               avec vous des prestations sur mesure, au restaurant comme en extérieur.
@@ -384,7 +389,7 @@ export function QuoteSection() {
 
         <Card variant="section" className={styles.quoteTips}>
           <VStack spacing="md">
-            <Typography variant="h4">Informations utiles pour votre demande</Typography>
+            <Typography variant="h4" as="h2">Informations utiles pour votre demande</Typography>
             <Typography variant="small" tone="secondary">
               Date souhaitee, nombre de convives, type de repas, attentes particulieres et
               organisation souhaitee.
@@ -425,7 +430,7 @@ export function ReviewsSection() {
           <Badge tone="success" variant="outline">
             Presse & distinctions
           </Badge>
-          <Typography variant="h2">Ils parlent de nous</Typography>
+          <Typography variant="h2" as="h1">Ils parlent de nous</Typography>
           <Typography variant="body" tone="secondary">
             Découvrez les articles et distinctions qui mettent en lumière Les Minots de la Garrigue.
           </Typography>
@@ -460,7 +465,7 @@ export function ReviewsSection() {
                   <Typography variant="caption" tone="secondary" className={styles.pressMediaName}>
                     {article.media}
                   </Typography>
-                  <Typography variant="h4">{article.title}</Typography>
+                  <Typography variant="h4" as="h3">{article.title}</Typography>
                 </VStack>
 
                 <Typography variant="body" tone="secondary" className={styles.pressExcerpt}>
@@ -493,7 +498,7 @@ export function ContactSection() {
     <Section spacing="xl" background="background">
       <Grid columns={2} className={styles.contactGrid}>
         <VStack spacing="lg">
-          <Typography variant="h2">Contact</Typography>
+          <Typography variant="h2" as="h1">Contact</Typography>
           <Typography variant="body" tone="secondary">
             Retrouvez toutes nos coordonnees pour nous rendre visite ou nous contacter directement.
           </Typography>
