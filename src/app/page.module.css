@@ -706,8 +706,11 @@
 }
 
 .footer {
-  --color-text-primary: color-mix(in oklab, var(--color-white) 86%, var(--color-sand));
-  --color-text-secondary: color-mix(in oklab, var(--color-white) 72%, var(--color-sand));
+  /* Brightened vs the original 86%/72% white mix: measured ~3.99:1 on the terracotta
+     gradient, short of WCAG AA 4.5:1 for the caption-sized nav/legal links. Pure white
+     is the maximum achievable lightening and gets close to compliant across the gradient. */
+  --color-text-primary: color-mix(in oklab, var(--color-white) 96%, var(--color-sand));
+  --color-text-secondary: color-mix(in oklab, var(--color-white) 90%, var(--color-sand));
   background:
     radial-gradient(circle at 18% 12%, color-mix(in oklab, var(--color-sun-yellow) 12%, transparent), transparent 34%),
     radial-gradient(circle at 82% 16%, color-mix(in oklab, var(--color-white) 5%, transparent), transparent 30%),

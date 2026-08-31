@@ -299,21 +299,21 @@ export function ReservationSection() {
               Votre demande est transmise directement au restaurant. Le site n&apos;affiche pas de
               systeme d&apos;acceptation ou de refus en ligne.
             </Typography>
-            <form className={styles.form} onSubmit={(event) => event.preventDefault()}>
+            <form className={styles.form} onSubmit={(event) => event.preventDefault()} noValidate>
               <label className={styles.fieldLabel} htmlFor="resa-name">
                 Nom
               </label>
-              <input id="resa-name" name="name" className={styles.field} autoComplete="name" />
+              <input id="resa-name" name="name" className={styles.field} autoComplete="name" required />
 
               <label className={styles.fieldLabel} htmlFor="resa-phone">
                 Telephone
               </label>
-              <input id="resa-phone" name="phone" className={styles.field} autoComplete="tel" />
+              <input id="resa-phone" name="phone" type="tel" className={styles.field} autoComplete="tel" required />
 
               <label className={styles.fieldLabel} htmlFor="resa-email">
                 Mail
               </label>
-              <input id="resa-email" name="email" type="email" className={styles.field} autoComplete="email" />
+              <input id="resa-email" name="email" type="email" className={styles.field} autoComplete="email" required />
 
               <Flex gap="md" wrap>
                 <div className={styles.fieldGroup}>

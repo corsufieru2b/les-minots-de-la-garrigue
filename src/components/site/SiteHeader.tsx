@@ -67,7 +67,11 @@ export function SiteHeader() {
           </Button>
         </Flex>
 
-        <div id="mobile-menu" className={cn(styles.mobilePanel, mobileOpen && styles.mobilePanelOpen)}>
+        <div
+          id="mobile-menu"
+          className={cn(styles.mobilePanel, mobileOpen && styles.mobilePanelOpen)}
+          inert={!mobileOpen}
+        >
           <VStack spacing="sm" className={styles.mobileStack}>
             {siteNavItems.map((item) => (
               <Link

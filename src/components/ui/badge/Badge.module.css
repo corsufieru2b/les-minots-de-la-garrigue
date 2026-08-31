@@ -69,7 +69,8 @@
 
 .soft.warning {
   background: color-mix(in oklab, var(--color-warning) 14%, var(--color-background));
-  color: var(--color-warning);
+  /* Darkened vs --color-warning: the raw token only reaches 1.92:1 on this soft background (WCAG AA needs 4.5:1). */
+  color: color-mix(in oklab, var(--color-warning) 70%, black);
 }
 
 .soft.error {

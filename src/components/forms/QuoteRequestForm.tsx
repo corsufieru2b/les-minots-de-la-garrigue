@@ -97,6 +97,7 @@ export function QuoteRequestForm() {
         name="name"
         className={styles.field}
         autoComplete="name"
+        required
         value={values.name}
         aria-invalid={Boolean(errors.name)}
         aria-describedby={errors.name ? "quote-name-error" : undefined}
@@ -122,8 +123,10 @@ export function QuoteRequestForm() {
       <input
         id="quote-phone"
         name="phone"
+        type="tel"
         className={styles.field}
         autoComplete="tel"
+        required
         value={values.phone}
         aria-invalid={Boolean(errors.phone)}
         aria-describedby={errors.phone ? "quote-phone-error" : undefined}
@@ -140,6 +143,7 @@ export function QuoteRequestForm() {
         type="email"
         className={styles.field}
         autoComplete="email"
+        required
         value={values.email}
         aria-invalid={Boolean(errors.email)}
         aria-describedby={errors.email ? "quote-email-error" : undefined}
@@ -155,6 +159,7 @@ export function QuoteRequestForm() {
         name="description"
         className={styles.fieldArea}
         rows={5}
+        required
         value={values.description}
         aria-invalid={Boolean(errors.description)}
         aria-describedby={errors.description ? "quote-description-error" : undefined}
