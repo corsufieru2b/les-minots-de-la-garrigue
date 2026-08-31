@@ -621,6 +621,30 @@
   resize: vertical;
 }
 
+.fieldError {
+  color: var(--color-error);
+  font-size: var(--type-caption);
+  margin: calc(var(--space-xs) * -1) 0 var(--space-xs);
+}
+
+.formError,
+.formSuccess {
+  border-radius: var(--radius-lg);
+  font-size: var(--type-small);
+  margin: 0;
+  padding: var(--space-sm) var(--space-md);
+}
+
+.formError {
+  background: color-mix(in oklab, var(--color-error) 8%, var(--color-surface));
+  color: var(--color-error);
+}
+
+.formSuccess {
+  background: color-mix(in oklab, var(--color-success) 8%, var(--color-surface));
+  color: var(--color-success);
+}
+
 .formAside {
   padding: var(--space-2xl);
 }
@@ -658,24 +682,26 @@
 }
 
 .mapPlaceholder {
+  display: flex;
+  flex-direction: column;
   min-height: 22rem;
   overflow: hidden;
   padding: 0;
-  position: relative;
 }
 
 .mapFrame {
   border: 0;
   display: block;
-  height: 100%;
-  min-height: 22rem;
+  flex: 1 1 auto;
+  min-height: 18rem;
   width: 100%;
 }
 
 .mapButtonLink {
-  bottom: var(--space-md);
-  position: absolute;
-  right: var(--space-md);
+  border-top: var(--component-border-width) solid var(--color-border);
+  display: flex;
+  justify-content: flex-end;
+  padding: var(--space-md);
   text-decoration: none;
 }
 

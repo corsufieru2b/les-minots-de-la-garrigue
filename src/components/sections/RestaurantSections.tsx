@@ -28,6 +28,7 @@ import {
   Typography,
   VStack,
 } from "@/components/ui";
+import { QuoteRequestForm } from "@/components/forms/QuoteRequestForm";
 
 import styles from "@/app/page.module.css";
 
@@ -377,36 +378,7 @@ export function QuoteSection() {
             <Typography variant="small" tone="secondary">
               Un événement, une envie, un projet ? Parlons-en.
             </Typography>
-            <form className={styles.form} onSubmit={(event) => event.preventDefault()}>
-              <label className={styles.fieldLabel} htmlFor="quote-name">
-                Nom
-              </label>
-              <input id="quote-name" name="name" className={styles.field} autoComplete="name" />
-
-              <label className={styles.fieldLabel} htmlFor="quote-company">
-                Entreprise
-              </label>
-              <input id="quote-company" name="company" className={styles.field} autoComplete="organization" />
-
-              <label className={styles.fieldLabel} htmlFor="quote-phone">
-                Telephone
-              </label>
-              <input id="quote-phone" name="phone" className={styles.field} autoComplete="tel" />
-
-              <label className={styles.fieldLabel} htmlFor="quote-email">
-                Mail
-              </label>
-              <input id="quote-email" name="email" type="email" className={styles.field} autoComplete="email" />
-
-              <label className={styles.fieldLabel} htmlFor="quote-description">
-                Description
-              </label>
-              <textarea id="quote-description" name="description" className={styles.fieldArea} rows={5} />
-
-              <Button variant="secondary" size="lg" type="submit">
-                Demander un devis
-              </Button>
-            </form>
+            <QuoteRequestForm />
           </VStack>
         </Surface>
 
