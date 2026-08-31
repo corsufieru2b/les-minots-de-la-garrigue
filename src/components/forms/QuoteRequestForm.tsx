@@ -23,6 +23,7 @@ const initialValues: QuoteRequestInput = {
 
 export function QuoteRequestForm() {
   const [values, setValues] = useState<QuoteRequestInput>(initialValues);
+  const [honeypot, setHoneypot] = useState("");
   const [errors, setErrors] = useState<QuoteRequestErrors>({});
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
@@ -50,7 +51,7 @@ export function QuoteRequestForm() {
 
     try {
       const response = await fetch("/api/quote-request", {
-        body: JSON.stringify(validation.data),
+        body: JSON.stringify({ ...validation.data, honeypot }),
         headers: { "Content-Type": "application/json" },
         method: "POST",
       });
@@ -75,6 +76,19 @@ export function QuoteRequestForm() {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit} noValidate>
+      {/* Honeypot: hidden from real visitors and assistive tech, only bots fill it in. */}
+      <div aria-hidden="true" style={{ height: 0, left: "-9999px", overflow: "hidden", position: "absolute", width: 0 }}>
+        <label htmlFor="quote-website">Ne pas remplir ce champ</label>
+        <input
+          id="quote-website"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          value={honeypot}
+          onChange={(event) => setHoneypot(event.target.value)}
+        />
+      </div>
+
       <label className={styles.fieldLabel} htmlFor="quote-name">
         Nom
       </label>

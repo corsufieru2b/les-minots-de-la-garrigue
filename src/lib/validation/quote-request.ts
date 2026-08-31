@@ -1,13 +1,14 @@
 import { z } from "zod";
 
-const requiredText = (message: string) => z.string().trim().min(1, message);
+const requiredText = (message: string, maxLength: number) =>
+  z.string().trim().min(1, message).max(maxLength, "Ce champ est trop long.");
 
 export const quoteRequestSchema = z.object({
-  name: requiredText("Le nom est obligatoire."),
-  company: z.string().trim().optional(),
-  phone: requiredText("Le téléphone est obligatoire."),
-  email: requiredText("L'email est obligatoire.").email("L'email doit être valide."),
-  description: requiredText("La description est obligatoire."),
+  name: requiredText("Le nom est obligatoire.", 120),
+  company: z.string().trim().max(150, "Ce champ est trop long.").optional(),
+  phone: requiredText("Le téléphone est obligatoire.", 30),
+  email: requiredText("L'email est obligatoire.", 254).email("L'email doit être valide."),
+  description: requiredText("La description est obligatoire.", 5000),
 });
 
 export type QuoteRequestInput = z.infer<typeof quoteRequestSchema>;
