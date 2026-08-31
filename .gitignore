@@ -38,4 +38,7 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+# local pre-change safety snapshots (superseded by git history)
+/.backup/
 next-env.d.ts

@@ -10,7 +10,7 @@ const routes = [
   "/reservation",
   "/avis",
   "/contact",
-  "/devis",
+  "/traiteur",
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {

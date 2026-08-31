@@ -33,12 +33,6 @@ import { QuoteRequestForm } from "@/components/forms/QuoteRequestForm";
 
 import styles from "@/app/page.module.css";
 
-const dishes = [
-  "/images/plats/plats-01.webp.jpeg",
-  "/images/plats/plats-02.webp.jpeg",
-  "/images/plats/plats-03.webp.jpeg",
-] as const;
-
 export type CuisineImage = {
   alt: string;
   src: string;
@@ -190,7 +184,7 @@ export function StorySection() {
   );
 }
 
-export function CuisineSection({ cuisineImages = dishes.map((src, index) => ({ alt: `Photo de cuisine ${index + 1}`, src })) }: { cuisineImages?: CuisineImage[] }) {
+export function CuisineSection({ cuisineImages = [] }: { cuisineImages?: CuisineImage[] }) {
   return (
     <Section spacing="xl" background="surface">
       <VStack spacing="xl">

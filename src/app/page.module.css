@@ -21,14 +21,6 @@
   color: color-mix(in oklab, var(--color-white) 96%, var(--color-sand));
 }
 
-.navbarHome .logoPrimary {
-  color: color-mix(in oklab, var(--color-white) 96%, var(--color-sand));
-}
-
-.navbarHome .logoSecondary {
-  color: color-mix(in oklab, var(--color-white) 86%, var(--color-sand));
-}
-
 .navbarHome .navLink {
   color: #ffffff;
   opacity: 0.95;
@@ -66,43 +58,8 @@
   color: var(--color-text-primary);
 }
 
-.navbarScrolled .logoPrimary {
-  color: var(--color-mediterranean-blue);
-}
-
-.navbarScrolled .logoSecondary {
-  color: var(--color-text-secondary);
-}
-
-.navbarHome.navbarScrolled .logoPrimary {
-  color: color-mix(in oklab, var(--color-white) 96%, var(--color-sand));
-}
-
-.navbarHome.navbarScrolled .logoSecondary {
-  color: color-mix(in oklab, var(--color-white) 86%, var(--color-sand));
-}
-
 .navInner {
   min-height: calc(var(--space-3xl) + var(--space-md));
-}
-
-.logo {
-  align-items: flex-start;
-  color: inherit;
-  display: inline-flex;
-  flex-direction: column;
-  gap: var(--space-xs);
-  text-decoration: none;
-}
-
-.logoPrimary {
-  color: var(--color-surface);
-  font-family: var(--font-family-secondary);
-}
-
-.logoSecondary {
-  color: color-mix(in oklab, var(--color-sand) 92%, var(--color-white));
-  text-transform: uppercase;
 }
 
 .desktopNav {
@@ -295,63 +252,6 @@
   width: 100%;
 }
 
-.heroIdentity {
-  display: grid;
-  gap: var(--space-sm);
-  justify-items: start;
-}
-
-.heroIdentityPrimary {
-  color: color-mix(in oklab, var(--color-white) 94%, var(--color-sand));
-  font-family: var(--font-family-secondary);
-  font-size: clamp(2.8rem, 6.5vw, 5.4rem);
-  line-height: 0.94;
-  letter-spacing: var(--letter-spacing-tight);
-  text-shadow: 0 10px 30px color-mix(in oklab, var(--color-wood) 24%, transparent);
-}
-
-.heroIdentitySecondary {
-  color: color-mix(in oklab, var(--color-white) 90%, var(--color-sand));
-  font-family: var(--font-family-secondary);
-  font-size: clamp(1.45rem, 3.25vw, 2.35rem);
-  letter-spacing: 0.08em;
-  line-height: 1;
-  text-shadow: 0 8px 22px color-mix(in oklab, var(--color-wood) 24%, transparent);
-  text-transform: uppercase;
-}
-
-.heroLogoWrap {
-  justify-self: start;
-  max-width: min(36rem, 84vw);
-  width: 100%;
-}
-
-.heroLogo {
-  filter: drop-shadow(0 8px 20px color-mix(in oklab, var(--color-wood) 24%, transparent));
-}
-
-.heroLogo :global(img) {
-  height: auto;
-  object-fit: contain;
-  width: 100%;
-}
-
-.heroBadge {
-  justify-self: start;
-}
-
-.heroTitle {
-  font-family: var(--font-family-secondary);
-  max-width: 12ch;
-  text-shadow: 0 10px 30px color-mix(in oklab, var(--color-wood) 28%, transparent);
-}
-
-.heroText {
-  color: color-mix(in oklab, var(--color-white) 90%, var(--color-sand));
-  max-width: 34rem;
-  text-shadow: 0 6px 20px color-mix(in oklab, var(--color-wood) 24%, transparent);
-}
-
 .heroActions {
   align-items: center;
   display: flex;
@@ -394,21 +294,6 @@
   background: color-mix(in oklab, var(--color-olive) 62%, transparent);
   border-color: color-mix(in oklab, var(--color-white) 58%, var(--color-olive));
   color: var(--color-white);
-}
-
-.heroHighlights {
-  display: grid;
-  gap: var(--space-md);
-  list-style: none;
-  margin: var(--space-xs) 0 0;
-  padding: 0;
-}
-
-.heroHighlight {
-  align-items: center;
-  color: color-mix(in oklab, var(--color-white) 94%, var(--color-sand));
-  display: inline-flex;
-  gap: var(--space-sm);
 }
 
 @media (max-width: 640px) {
@@ -483,11 +368,6 @@
   width: auto;
 }
 
-.pressMediaMarkText {
-  color: color-mix(in oklab, var(--color-olive) 58%, var(--color-text-primary));
-  text-transform: uppercase;
-}
-
 .pressMediaName {
   color: var(--color-terracotta);
   letter-spacing: 0.05em;
@@ -516,14 +396,11 @@
   object-fit: cover;
 }
 
-.dishCard,
 .cuisineGalleryCard {
   overflow: hidden;
   padding: var(--space-md);
 }
 
-.dishImage,
-.dishImage :global(img),
 .cuisineGalleryImage,
 .cuisineGalleryImage :global(img) {
   aspect-ratio: 4 / 3;
@@ -532,10 +409,6 @@
 
 .cuisineGalleryGrid {
   --grid-min-width: 15rem;
-}
-
-.dishCaptionPlaceholder {
-  min-height: calc(var(--space-xl) + var(--space-sm));
 }
 
 .masonry {
@@ -833,12 +706,6 @@
   }
 }
 
-@media (min-width: 96rem) {
-  .heroTitle {
-    max-width: 13ch;
-  }
-}
-
 @media (max-width: 47.99rem) {
   .hero {
     min-height: 100vh;
@@ -856,14 +723,6 @@
   .heroContent {
     gap: var(--space-lg);
     max-width: min(100%, 34rem);
-  }
-
-  .heroIdentitySecondary {
-    letter-spacing: 0.06em;
-  }
-
-  .heroLogoWrap {
-    max-width: min(82vw, 23rem);
   }
 
   /* Column flex-wrap with flex-basis 100% pushed the second CTA into a new column, off-screen. */

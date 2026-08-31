@@ -59,6 +59,15 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: "/devis",
+        destination: "/traiteur",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

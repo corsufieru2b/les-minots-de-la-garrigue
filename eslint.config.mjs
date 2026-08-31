@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Local pre-change safety snapshots, not app code.
+    ".backup/**",
   ]),
 ]);
 
