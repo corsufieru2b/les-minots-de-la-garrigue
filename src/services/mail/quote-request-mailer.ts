@@ -10,10 +10,17 @@ type QuoteRequestEmailPayload = QuoteRequestInput & {
 const defaultFromEmail = "Les Minots de la Garrigue <onboarding@resend.dev>";
 
 function formatQuoteRequestEmail(payload: QuoteRequestEmailPayload) {
+  // Explicit parts + hour12:false instead of dateStyle/timeStyle shorthands, which can
+  // resolve differently (12h vs 24h, DST handling) across Node/ICU versions/runtimes.
   const receivedAt = new Intl.DateTimeFormat("fr-FR", {
-    dateStyle: "full",
-    timeStyle: "short",
     timeZone: "Europe/Paris",
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
   }).format(payload.receivedAt);
 
   return [
@@ -38,11 +45,17 @@ export async function sendQuoteRequestEmail(payload: QuoteRequestEmailPayload) {
 
   const resend = new Resend(serverEnv.RESEND_API_KEY);
 
-  return resend.emails.send({
+  const result = await resend.emails.send({
     from: serverEnv.RESEND_FROM_EMAIL ?? defaultFromEmail,
     replyTo: payload.email,
     to: serverEnv.QUOTE_REQUEST_RECIPIENT_EMAIL,
     subject: "Nouvelle demande de devis",
     text: formatQuoteRequestEmail(payload),
   });
+
+  if (result.error || !result.data?.id) {
+    throw new Error("Quote request email delivery was rejected.");
+  }
+
+  return result.data;
 }

@@ -55,8 +55,8 @@ export async function POST(request: Request) {
     });
 
     return NextResponse.json({ message: "Votre demande de devis a bien été envoyée." });
-  } catch (error) {
-    console.error("Quote request email failed", error);
+  } catch {
+    console.error("Quote request email failed");
 
     return NextResponse.json(
       { message: "Votre demande n'a pas pu être envoyée. Merci de réessayer plus tard." },
