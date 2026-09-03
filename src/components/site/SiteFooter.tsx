@@ -32,30 +32,31 @@ export function SiteFooter() {
           <VStack spacing="sm">
             <Typography variant="small">Reseaux</Typography>
             <HStack spacing="sm">
-              <IconWrapper variant="outline" size="md" className={styles.footerSocialIcon}>
-                <Typography variant="caption">IG</Typography>
-              </IconWrapper>
-              <IconWrapper variant="outline" size="md" className={styles.footerSocialIcon}>
-                <Typography variant="caption">FB</Typography>
-              </IconWrapper>
-              <IconWrapper variant="outline" size="md" className={styles.footerSocialIcon}>
-                <Typography variant="caption">LN</Typography>
-              </IconWrapper>
+              <a
+                href="https://www.instagram.com/lesminotsdelagarrigue?igsi=cDl6anMxaG9mbGV3"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram des Minots de la Garrigue"
+              >
+                <IconWrapper variant="outline" size="md" className={styles.footerSocialIcon}>
+                  <Typography variant="caption">IG</Typography>
+                </IconWrapper>
+              </a>
             </HStack>
           </VStack>
 
           <VStack spacing="sm">
             <Typography variant="small">Legal</Typography>
-            <a href="#" className={styles.footerLink}>
+            <Link href="/mentions-legales" className={styles.footerLink}>
               <Typography variant="caption" tone="secondary">
                 Mentions legales
               </Typography>
-            </a>
-            <a href="#" className={styles.footerLink}>
+            </Link>
+            <Link href="/politique-de-confidentialite" className={styles.footerLink}>
               <Typography variant="caption" tone="secondary">
                 Politique de confidentialite
               </Typography>
-            </a>
+            </Link>
           </VStack>
         </Grid>
 

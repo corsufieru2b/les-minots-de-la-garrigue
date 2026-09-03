@@ -1,12 +1,13 @@
 import { NextResponse } from "next/server";
 
+import { createCancellationToken } from "@/lib/reservation/cancellation-token";
 import { getClientIp, getOptionalStringField, isJsonRequest, jsonContentTypeError, omitFields } from "@/lib/security/http";
 import { checkRateLimit, rateLimitExceededResponseMessage } from "@/lib/security/rate-limit";
 import { turnstileErrorMessage, verifyTurnstileToken } from "@/lib/security/turnstile";
-import { validateQuoteRequest } from "@/lib/validation/quote-request";
-import { sendQuoteRequestEmail } from "@/services/mail/quote-request-mailer";
+import { validateReservationRequest } from "@/lib/validation/reservation";
+import { sendReservationEmails } from "@/services/mail/reservation-mailer";
+import { createReservation } from "@/services/reservations/reservation-repository";
 
-// Defense in depth on top of Vercel's own platform-level request size limit.
 const MAX_BODY_BYTES = 20_000;
 
 export async function POST(request: Request) {
@@ -31,16 +32,10 @@ export async function POST(request: Request) {
     );
   }
 
-  // Honeypot: a hidden form field that must stay empty for genuine visitors.
-  // Bots that fill every field get a normal-looking success response with no email sent.
-  if (getOptionalStringField(body, "honeypot").trim() !== "") {
-    return NextResponse.json({ message: "Votre demande de devis a bien été envoyée." });
-  }
-
   const clientIp = getClientIp(request);
 
   try {
-    const rateLimit = await checkRateLimit({ identifier: clientIp, limit: 5, name: "quote-request", windowSeconds: 600 });
+    const rateLimit = await checkRateLimit({ identifier: clientIp, limit: 8, name: "reservation-create", windowSeconds: 600 });
 
     if (!rateLimit.allowed) {
       return NextResponse.json({ message: rateLimitExceededResponseMessage() }, { status: 429 });
@@ -52,15 +47,15 @@ export async function POST(request: Request) {
       return NextResponse.json({ message: turnstileErrorMessage() }, { status: 400 });
     }
   } catch {
-    console.error("Quote request protection failed");
+    console.error("Reservation request protection failed");
 
     return NextResponse.json(
-      { message: "Votre demande n'a pas pu être envoyée. Merci de réessayer plus tard." },
+      { message: "Votre réservation n'a pas pu être envoyée. Merci de réessayer plus tard." },
       { status: 500 },
     );
   }
 
-  const validation = validateQuoteRequest(omitFields(body, ["honeypot", "turnstileToken"]));
+  const validation = validateReservationRequest(omitFields(body, ["turnstileToken"]));
 
   if (!validation.data) {
     return NextResponse.json(
@@ -73,17 +68,21 @@ export async function POST(request: Request) {
   }
 
   try {
-    await sendQuoteRequestEmail({
-      ...validation.data,
+    const cancellationToken = createCancellationToken();
+    const reservation = await createReservation(validation.data, cancellationToken.hash);
+
+    await sendReservationEmails({
+      cancellationToken: cancellationToken.token,
       receivedAt: new Date(),
+      reservation,
     });
 
-    return NextResponse.json({ message: "Votre demande de devis a bien été envoyée." });
+    return NextResponse.json({ message: "Votre réservation a bien été prise en compte." });
   } catch {
-    console.error("Quote request email failed");
+    console.error("Reservation request failed");
 
     return NextResponse.json(
-      { message: "Votre demande n'a pas pu être envoyée. Merci de réessayer plus tard." },
+      { message: "Votre réservation n'a pas pu être envoyée. Merci de réessayer plus tard." },
       { status: 500 },
     );
   }

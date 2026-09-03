@@ -1,7 +1,13 @@
 export const SITE_NAME = "Les Minots de la Garrigue";
 export const SITE_DESCRIPTION =
   "Restaurant à Hyères : cuisine méditerranéenne de saison, produits locaux et circuit court, imaginée par Martin.";
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+
+if (!configuredSiteUrl) {
+  throw new Error("NEXT_PUBLIC_SITE_URL is required.");
+}
+
+export const SITE_URL = configuredSiteUrl;
 
 // Coordonnées officielles du restaurant, réutilisées pour les metadata et les donnees structurees.
 export const SITE_ADDRESS = {

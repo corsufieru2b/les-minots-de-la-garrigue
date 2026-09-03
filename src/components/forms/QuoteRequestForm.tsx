@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 
+import { TurnstileWidget } from "@/components/security/TurnstileWidget";
 import { Button } from "@/components/ui";
 import {
   type QuoteRequestErrors,
@@ -51,7 +52,11 @@ export function QuoteRequestForm() {
 
     try {
       const response = await fetch("/api/quote-request", {
-        body: JSON.stringify({ ...validation.data, honeypot }),
+        body: JSON.stringify({
+          ...validation.data,
+          honeypot,
+          turnstileToken: new FormData(event.currentTarget).get("cf-turnstile-response") ?? "",
+        }),
         headers: { "Content-Type": "application/json" },
         method: "POST",
       });
@@ -177,6 +182,8 @@ export function QuoteRequestForm() {
           {statusMessage}
         </p>
       ) : null}
+
+      <TurnstileWidget />
 
       <Button variant="secondary" size="lg" type="submit" loading={submitState === "submitting"}>
         Demander un devis

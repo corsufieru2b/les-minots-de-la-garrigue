@@ -13,12 +13,12 @@ const isProduction = process.env.NODE_ENV === "production";
 
 const contentSecurityPolicy = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline'",
+  "script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: https:",
   "font-src 'self' data:",
-  "connect-src 'self'",
-  "frame-src https://www.google.com",
+  "connect-src 'self' https://challenges.cloudflare.com",
+  "frame-src https://www.google.com https://challenges.cloudflare.com",
   "frame-ancestors 'self'",
   "base-uri 'self'",
   "form-action 'self'",

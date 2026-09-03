@@ -30,6 +30,7 @@ import {
 } from "@/components/ui";
 import srOnlyStyles from "@/components/ui/utilities/Utilities.module.css";
 import { QuoteRequestForm } from "@/components/forms/QuoteRequestForm";
+import { ReservationForm } from "@/components/forms/ReservationForm";
 
 import styles from "@/app/page.module.css";
 
@@ -293,51 +294,7 @@ export function ReservationSection() {
               Votre demande est transmise directement au restaurant. Le site n&apos;affiche pas de
               systeme d&apos;acceptation ou de refus en ligne.
             </Typography>
-            <form className={styles.form} onSubmit={(event) => event.preventDefault()} noValidate>
-              <label className={styles.fieldLabel} htmlFor="resa-name">
-                Nom
-              </label>
-              <input id="resa-name" name="name" className={styles.field} autoComplete="name" required />
-
-              <label className={styles.fieldLabel} htmlFor="resa-phone">
-                Telephone
-              </label>
-              <input id="resa-phone" name="phone" type="tel" className={styles.field} autoComplete="tel" required />
-
-              <label className={styles.fieldLabel} htmlFor="resa-email">
-                Mail
-              </label>
-              <input id="resa-email" name="email" type="email" className={styles.field} autoComplete="email" required />
-
-              <Flex gap="md" wrap>
-                <div className={styles.fieldGroup}>
-                  <label className={styles.fieldLabel} htmlFor="resa-date">
-                    Date
-                  </label>
-                  <input id="resa-date" name="date" type="date" className={styles.field} />
-                </div>
-                <div className={styles.fieldGroup}>
-                  <label className={styles.fieldLabel} htmlFor="resa-time">
-                    Heure
-                  </label>
-                  <input id="resa-time" name="time" type="time" className={styles.field} />
-                </div>
-              </Flex>
-
-              <label className={styles.fieldLabel} htmlFor="resa-guests">
-                Nombre de personnes
-              </label>
-              <input id="resa-guests" name="guests" type="number" min={1} className={styles.field} />
-
-              <label className={styles.fieldLabel} htmlFor="resa-message">
-                Message
-              </label>
-              <textarea id="resa-message" name="message" className={styles.fieldArea} rows={4} />
-
-              <Button variant="primary" size="lg" type="submit">
-                Envoyer
-              </Button>
-            </form>
+            <ReservationForm />
           </VStack>
         </Surface>
 
@@ -377,6 +334,9 @@ export function QuoteSection() {
             <Typography variant="small" tone="secondary">
               Mariage, baptême, anniversaire, dîner privé ou chef à domicile : nous imaginons
               avec vous des prestations sur mesure, au restaurant comme en extérieur.
+            </Typography>
+            <Typography variant="small" tone="secondary">
+              Le restaurant peut également être privatisé tous les jours de la semaine, y compris les jours de fermeture.
             </Typography>
             <Typography variant="small" tone="secondary">
               Un événement, une envie, un projet ? Parlons-en.
