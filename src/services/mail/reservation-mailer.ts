@@ -36,7 +36,7 @@ type ReservationCancellationEmailPayload = {
 };
 
 export async function sendReservationEmails(payload: ReservationEmailPayload) {
-  if (!serverEnv.RESEND_API_KEY || !serverEnv.RESERVATION_RECIPIENT_EMAIL || !publicEnv.NEXT_PUBLIC_SITE_URL) {
+  if (!serverEnv.RESEND_API_KEY || !serverEnv.RESERVATIONS_RECIPIENT_EMAIL || !publicEnv.NEXT_PUBLIC_SITE_URL) {
     console.error("Reservation email configuration is missing");
     throw new Error("Reservation email configuration is missing.");
   }
@@ -60,12 +60,12 @@ export async function sendReservationEmails(payload: ReservationEmailPayload) {
     replyTo: payload.reservation.email,
     subject: "Nouvelle réservation",
     text: restaurantEmail.text,
-    to: serverEnv.RESERVATION_RECIPIENT_EMAIL,
+    to: serverEnv.RESERVATIONS_RECIPIENT_EMAIL,
   });
 }
 
 export async function sendReservationCancellationEmails(payload: ReservationCancellationEmailPayload) {
-  if (!serverEnv.RESEND_API_KEY || !serverEnv.RESERVATION_RECIPIENT_EMAIL) {
+  if (!serverEnv.RESEND_API_KEY || !serverEnv.RESERVATIONS_RECIPIENT_EMAIL) {
     console.error("Reservation email configuration is missing");
     throw new Error("Reservation email configuration is missing.");
   }
@@ -89,7 +89,7 @@ export async function sendReservationCancellationEmails(payload: ReservationCanc
     replyTo: payload.reservation.email,
     subject: "Réservation annulée",
     text: restaurantEmail.text,
-    to: serverEnv.RESERVATION_RECIPIENT_EMAIL,
+    to: serverEnv.RESERVATIONS_RECIPIENT_EMAIL,
   });
 }
 

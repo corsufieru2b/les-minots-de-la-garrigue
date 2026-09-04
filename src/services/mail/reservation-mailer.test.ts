@@ -35,7 +35,7 @@ async function importMailer() {
   process.env.NEXT_PUBLIC_SITE_URL = "https://example.com";
   process.env.RESEND_API_KEY = "test_resend_key";
   process.env.RESEND_FROM_EMAIL = "Les Minots de la Garrigue <test@example.com>";
-  process.env.RESERVATION_RECIPIENT_EMAIL = "restaurant@example.com";
+  process.env.RESERVATIONS_RECIPIENT_EMAIL = "restaurant@example.com";
 
   return import("./reservation-mailer");
 }
