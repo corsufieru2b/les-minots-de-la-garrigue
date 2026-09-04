@@ -1,6 +1,8 @@
 import { serverEnv } from "@/config/env";
 
 type TurnstileResponse = {
+  "error-codes"?: string[];
+  hostname?: string;
   success?: boolean;
 };
 
@@ -41,6 +43,13 @@ export async function verifyTurnstileToken(token: string, remoteIp: string) {
   }
 
   const payload = (await response.json()) as TurnstileResponse;
+
+  // Temporary diagnostic: Cloudflare's own success/error-codes, never the secret or the user token.
+  console.error("Turnstile siteverify result", {
+    errorCodes: payload["error-codes"],
+    hostname: payload.hostname,
+    success: payload.success,
+  });
 
   return payload.success === true;
 }
