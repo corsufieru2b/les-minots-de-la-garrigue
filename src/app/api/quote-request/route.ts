@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { getClientIp, getOptionalStringField, isJsonRequest, jsonContentTypeError, omitFields } from "@/lib/security/http";
+import { getClientIp, getOptionalStringField, isJsonRequest, jsonContentTypeError, logProtectionFailure, omitFields } from "@/lib/security/http";
 import { checkRateLimit, rateLimitExceededResponseMessage } from "@/lib/security/rate-limit";
 import { turnstileErrorMessage, verifyTurnstileToken } from "@/lib/security/turnstile";
 import { validateQuoteRequest } from "@/lib/validation/quote-request";
@@ -51,8 +51,8 @@ export async function POST(request: Request) {
     if (!isTurnstileValid) {
       return NextResponse.json({ message: turnstileErrorMessage() }, { status: 400 });
     }
-  } catch {
-    console.error("Quote request protection failed");
+  } catch (error) {
+    logProtectionFailure("Quote request", error);
 
     return NextResponse.json(
       { message: "Votre demande n'a pas pu être envoyée. Merci de réessayer plus tard." },

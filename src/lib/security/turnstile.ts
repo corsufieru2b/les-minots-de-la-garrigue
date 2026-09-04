@@ -5,8 +5,11 @@ type TurnstileResponse = {
 };
 
 export async function verifyTurnstileToken(token: string, remoteIp: string) {
+  // Temporary diagnostic: confirms whether the secret is actually present at runtime, without ever logging its value.
+  console.error("Turnstile check", { hasTurnstileSecret: Boolean(serverEnv.TURNSTILE_SECRET_KEY) });
+
   if (!serverEnv.TURNSTILE_SECRET_KEY) {
-    throw new Error("Turnstile configuration is missing.");
+    throw new Error("TURNSTILE_CONFIG_MISSING");
   }
 
   if (!token) {
@@ -22,13 +25,19 @@ export async function verifyTurnstileToken(token: string, remoteIp: string) {
     formData.set("remoteip", remoteIp);
   }
 
-  const response = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
-    body: formData,
-    method: "POST",
-  });
+  let response: Response;
+
+  try {
+    response = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+      body: formData,
+      method: "POST",
+    });
+  } catch {
+    throw new Error("TURNSTILE_NETWORK_ERROR");
+  }
 
   if (!response.ok) {
-    throw new Error("Turnstile verification failed.");
+    throw new Error(`TURNSTILE_HTTP_NOT_OK:${response.status}`);
   }
 
   const payload = (await response.json()) as TurnstileResponse;

@@ -33,3 +33,23 @@ export function omitFields(body: unknown, fields: string[]) {
 
   return Object.fromEntries(entries);
 }
+
+// Temporary diagnostic: buckets the protection-check failure into a safe, non-secret category.
+export function logProtectionFailure(scope: string, error: unknown) {
+  const message = error instanceof Error ? error.message : "UNKNOWN_ERROR";
+  const [reason = "UNKNOWN_ERROR", statusCode] = message.split(":");
+
+  const knownReasons = [
+    "RATE_LIMIT_CONFIG_MISSING",
+    "RATE_LIMIT_NETWORK_ERROR",
+    "RATE_LIMIT_HTTP_NOT_OK",
+    "TURNSTILE_CONFIG_MISSING",
+    "TURNSTILE_NETWORK_ERROR",
+    "TURNSTILE_HTTP_NOT_OK",
+  ];
+
+  console.error(`${scope} protection failed`, {
+    cloudflareOrUpstashStatus: statusCode,
+    reason: knownReasons.includes(reason) ? reason : "OTHER_EXCEPTION",
+  });
+}
